@@ -77,8 +77,33 @@ const PORT = process.env.PORT;
 //     "trailer": "https://www.youtube.com/embed/NgsQ8mVkN8w"
 //     }
 // ]
+// const mobiles = [
+//   {
+//     model: "OnePlus 9 5G",
+//     img: "https://m.media-amazon.com/images/I/61fy+u9uqPL._SX679_.jpg",
+//     company: "Oneplus"
+//   },
+//   {
+//     model: "Iphone 13 mini",
+//     img:
+//       "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-mini-blue-select-2021?wid=470&hei=556&fmt=jpeg&qlt=95&.v=1645572315986",
+//     company: "Apple"
+//   },
+//   {
+//     model: "Samsung s21 ultra",
+//     img: "https://m.media-amazon.com/images/I/81kfA-GtWwL._SY606_.jpg",
+//     company: "Samsung"
+//   },
+//   {
+//     model: "Xiomi mi 11",
+//     img: "https://m.media-amazon.com/images/I/51K4vNxMAhS._AC_SX522_.jpg",
+//     company: "Xiomi"
+//   }
+// ];
+
 app.use(cors())
 app.use(express.json())
+
 // const MONGO_URL= 'mongodb://localhost';
 const MONGO_URL = process.env.MONGO_URL;
 
@@ -92,5 +117,17 @@ export const client = await createConnection();
 app.get('/', function (req, res) {
   res.send("Hello World")
 })
+// app.get("/mobiles", async function(request,response){
+//   const mobiles = await client.db("guvi-db").collection("mobiles").find({}).toArray();
+//   console.log(mobiles)
+//   response.send(mobiles)
+// })
+
+// app.post("/mobiles", async function(request,response){
+//   const data = request.body;
+//   console.log(data)
+//   const result = await client.db("guvi-db").collection("mobiles").insertMany(data);
+//   response.send(result);
+// })
 app.use("/movies", moviesRouter)
 app.listen(PORT,()=>console.log(`App started in ${PORT}`))
