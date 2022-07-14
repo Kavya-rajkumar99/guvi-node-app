@@ -8,6 +8,7 @@ router.get('/', async function (request, response) {
     }
     console.log(request.query)
     const movies = await getAllMovies(request)
+    console.log(movies)
     response.send(movies)
   })
   
